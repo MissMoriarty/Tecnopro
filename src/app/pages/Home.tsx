@@ -11,39 +11,39 @@ import { useCart } from "../context/CartContext";
 const heroSlides = [
   {
     id: 1,
-    tag: "Workstation del Año 2026",
-    title: "Dell Precision 7920",
-    subtitle: "Tower Workstation",
-    description: "El poder de un servidor en tu escritorio. Procesador Xeon, 128GB RAM ECC y GPU RTX A5000 para las cargas de trabajo más exigentes.",
-    price: 4299,
+    tag: "Gama Alta",
+    title: "Dell Precision 3591",
+    subtitle: "Laptop de alto rendimiento",
+    description: "Precisión profesional, sin compromisos, desde el primer trazo hasta el último circuito.",
+    price: 0,
     cta: "Ver Producto",
-    productId: "ws-001",
-    image: "https://images.unsplash.com/photo-1770992203133-263e3034a367?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB3b3Jrc3RhdGlvbiUyMGNvbXB1dGVyJTIwZGVzayUyMHNldHVwfGVufDF8fHx8MTc3NjY1ODM2N3ww&ixlib=rb-4.1.0&q=80&w=1080",
-    specs: ["Intel Xeon W-2295", "128GB DDR4 ECC", "NVIDIA RTX A5000"],
+    productId: "sv-003",
+    image: "https://laptopmedia.com/wp-content/uploads/2024/11/5-19-1536x864.jpg",
+    specs: ["Intel Core Ultra 9 165H", "64 GB LPDDR5X", "NVIDIA RTX 500"],
   },
   {
     id: 2,
-    tag: "Mobile Workstation",
-    title: "HP ZBook Fury 16",
-    subtitle: "Laptop Profesional G9",
-    description: "La mobile workstation más potente del mercado. Pantalla 4K DreamColor y GPU profesional RTX A5500 para creativos sin fronteras.",
-    price: 3199,
+    tag: "Gama media",
+    title: "ThinkPad E14 Gen 7",
+    subtitle: "Hecha para los que no paran.",
+    description: "Potencia de ingeniería, resistencia de campo, en una sola máquina.",
+    price: 0,
     cta: "Ver Producto",
     productId: "lt-001",
-    image: "https://images.unsplash.com/photo-1659355894059-c6b57f5bc8e9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbnRlcnByaXNlJTIwYnVzaW5lc3MlMjBsYXB0b3AlMjBwcm9mZXNzaW9uYWx8ZW58MXx8fHwxNzc2NjU4MzY3fDA&ixlib=rb-4.1.0&q=80&w=1080",
-    specs: ["Core i9-12950HX", "64GB DDR5 ECC", "RTX A5500 16GB"],
+    image: "https://www.laphard.pl/userdata/public/assets/images/Product/Lenovo/ThinkPad/E14_G7/laptop-lenovo-thinkpad-e14-gen-7-006.webp",
+    specs: ["Intel Core Ultra 7 240H", "32 GB DDR5", "Intel Arc Graphics"],
   },
   {
     id: 3,
-    tag: "Infraestructura Empresarial",
-    title: "Dell PowerEdge R750",
-    subtitle: "Servidor Rack 2U",
-    description: "Alta disponibilidad y rendimiento sin compromisos. Doble Xeon Gold, 512GB RAM ECC y fuentes redundantes para operación 24/7.",
-    price: 8999,
+    tag: "Gama básica",
+    title: "HP 245 G10",
+    subtitle: "Rendimiento profesional sin precio profesional.",
+    description: "Todo lo que tu equipo necesita para trabajar, sin nada que sobre.",
+    price: 0,
     cta: "Ver Producto",
-    productId: "sv-001",
-    image: "https://images.unsplash.com/photo-1762163516269-3c143e04175c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzZXJ2ZXIlMjByYWNrJTIwZGF0YSUyMGNlbnRlciUyMGVudGVycHJpc2V8ZW58MXx8fHwxNzc2NjU4MzY3fDA&ixlib=rb-4.1.0&q=80&w=1080",
-    specs: ["2x Xeon Gold 6330", "512GB DDR4 ECC", "Fuentes Redundantes"],
+    productId: "ws-001",
+    image: "https://jp.ext.hp.com/content/dam/jp-ext-hp-com/jp/ja/ec/notebooks/business/hp_245_g10/images/move3_full.jpg",
+    specs: ["AMD Ryzen 5 7530U", "8 GB RAM DDR4-3200 MT/", "AMD Radeon Graphics"],
   },
 ];
 
@@ -53,7 +53,7 @@ const categoryCards = [
     label: "Workstations",
     desc: "Torre y ultra-compactas",
     icon: <Monitor size={28} />,
-    count: products.filter(p => p.category === "workstation").length,
+    count: products.filter(p => p.category === "Gama básica").length,
     gradient: "linear-gradient(135deg, #000675 0%, #0044AA 100%)",
   },
   {
@@ -61,7 +61,7 @@ const categoryCards = [
     label: "Laptops Empresariales",
     desc: "Movilidad profesional",
     icon: <Laptop size={28} />,
-    count: products.filter(p => p.category === "laptop").length,
+    count: products.filter(p => p.category === "Gama media").length,
     gradient: "linear-gradient(135deg, #0044AA 0%, #30A4FF 100%)",
   },
   {
@@ -69,7 +69,7 @@ const categoryCards = [
     label: "Servidores",
     desc: "Alta disponibilidad",
     icon: <Server size={28} />,
-    count: products.filter(p => p.category === "server").length,
+    count: products.filter(p => p.category === "Gama alta").length,
     gradient: "linear-gradient(135deg, #30A4FF 0%, #00C2FF 100%)",
   },
   {
@@ -77,7 +77,7 @@ const categoryCards = [
     label: "Accesorios Pro",
     desc: "Equipamiento completo",
     icon: <Package size={28} />,
-    count: products.filter(p => p.category === "accessory").length,
+    count: 0,
     gradient: "linear-gradient(135deg, #00C2FF 0%, #30A4FF 100%)",
   },
 ];
@@ -99,7 +99,7 @@ const stats = [
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const { addToCart } = useCart();
-  const featuredProducts = products.filter(p => p.featured);
+  const featuredProducts = products.slice(0, 3);
   const popularProducts = products.slice(0, 4);
 
   useEffect(() => {

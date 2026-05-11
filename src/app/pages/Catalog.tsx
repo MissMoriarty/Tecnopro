@@ -5,7 +5,7 @@ import { products, brands } from "../../data/products";
 import type { Product } from "../../data/products";
 import { ProductCard } from "../components/ProductCard";
 
-type SortOption = "popular" | "price-asc" | "price-desc" | "rating" | "name";
+type SortOption = "popular" | "price-asc" | "price-desc" | "name";
 
 const categoryOptions = [
   { id: "", label: "Todas las categorías" },
@@ -19,7 +19,6 @@ const sortOptions: { value: SortOption; label: string }[] = [
   { value: "popular", label: "Más populares" },
   { value: "price-asc", label: "Precio: menor a mayor" },
   { value: "price-desc", label: "Precio: mayor a menor" },
-  { value: "rating", label: "Mejor valorados" },
   { value: "name", label: "Nombre A-Z" },
 ];
 
@@ -74,9 +73,8 @@ export default function Catalog() {
     switch (sortBy) {
       case "price-asc": return result.sort((a, b) => a.price - b.price);
       case "price-desc": return result.sort((a, b) => b.price - a.price);
-      case "rating": return result.sort((a, b) => b.rating - a.rating);
       case "name": return result.sort((a, b) => a.name.localeCompare(b.name));
-      default: return result.sort((a, b) => b.reviews - a.reviews);
+      default: return result;
     }
   }, [searchQuery, selectedCategory, selectedBrands, priceRange, inStockOnly, sortBy]);
 
@@ -398,11 +396,7 @@ export default function Catalog() {
                           <p className="font-bold" style={{ color: "#000675", fontSize: "1.2rem" }}>
                             ${product.price.toLocaleString()}
                           </p>
-                          {product.originalPrice && (
-                            <p className="text-xs line-through" style={{ color: "#A1A1A3" }}>
-                              ${product.originalPrice.toLocaleString()}
-                            </p>
-                          )}
+                          
                           <div className="flex gap-2 mt-3">
                             <a
                               href={`/producto/${product.id}`}

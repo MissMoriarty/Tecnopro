@@ -43,9 +43,6 @@ export default function ProductDetail() {
     setTimeout(() => setAddedFeedback(false), 2500);
   };
 
-  const discount = product.originalPrice
-    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
-    : null;
 
   return (
     <div className="min-h-screen bg-white">
@@ -91,14 +88,7 @@ export default function ProductDetail() {
                   {product.badge}
                 </div>
               )}
-              {discount && (
-                <div
-                  className="absolute top-4 right-4 px-3 py-1.5 rounded-xl text-white text-xs font-bold"
-                  style={{ backgroundColor: "#00C2FF" }}
-                >
-                  -{discount}% OFF
-                </div>
-              )}
+              
             </div>
 
             {/* Trust badges */}
@@ -136,21 +126,7 @@ export default function ProductDetail() {
               {product.name}
             </h1>
 
-            {/* Rating */}
-            <div className="flex items-center gap-3 mb-5">
-              <div className="flex">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star
-                    key={i}
-                    size={16}
-                    fill={i < Math.floor(product.rating) ? "#30A4FF" : "transparent"}
-                    style={{ color: i < Math.floor(product.rating) ? "#30A4FF" : "#CDCED2" }}
-                  />
-                ))}
-              </div>
-              <span className="text-sm font-semibold" style={{ color: "#000675" }}>{product.rating}</span>
-              <span className="text-sm" style={{ color: "#818286" }}>({product.reviews} reseñas)</span>
-            </div>
+            
 
             <p className="mb-6 text-sm" style={{ color: "#707072", lineHeight: 1.8 }}>
               {product.description}
@@ -181,16 +157,7 @@ export default function ProductDetail() {
                 <span style={{ fontSize: "2rem", fontWeight: 800, color: "#000675" }}>
                   ${product.price.toLocaleString()}
                 </span>
-                {product.originalPrice && (
-                  <span className="text-base line-through" style={{ color: "#A1A1A3" }}>
-                    ${product.originalPrice.toLocaleString()}
-                  </span>
-                )}
-                {discount && (
-                  <span className="px-2 py-0.5 rounded-lg text-xs font-bold text-white" style={{ backgroundColor: "#00C2FF" }}>
-                    Ahorras ${(product.originalPrice! - product.price).toLocaleString()}
-                  </span>
-                )}
+                
               </div>
               <p className="text-xs mb-4" style={{ color: "#818286" }}>
                 Precio sin IVA. {product.inStock ? (
@@ -272,17 +239,7 @@ export default function ProductDetail() {
               </div>
             </div>
 
-            {/* Corporate info */}
-            <div className="flex items-start gap-3 p-4 rounded-xl" style={{ backgroundColor: "#f0f4ff" }}>
-              <Package size={18} style={{ color: "#000675" }} className="shrink-0 mt-0.5" />
-              <div>
-                <p className="text-sm font-semibold" style={{ color: "#000675" }}>¿Necesitas 5 o más unidades?</p>
-                <p className="text-xs mt-0.5" style={{ color: "#818286" }}>
-                  Obtén hasta 20% de descuento corporativo.{" "}
-                  <a href="tel:+18005553324" style={{ color: "#0044AA" }} className="underline">Llama al +1 (800) 555-TECH</a>
-                </p>
-              </div>
-            </div>
+            
           </div>
         </div>
 

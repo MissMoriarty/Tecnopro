@@ -12,7 +12,6 @@ export function Footer() {
               { icon: <Truck size={22} />, title: "Envío Express", desc: "En 24-48 horas a todo el país" },
               { icon: <Shield size={22} />, title: "Garantía Extendida", desc: "Hasta 5 años de cobertura" },
               { icon: <HeadphonesIcon size={22} />, title: "Soporte 24/7", desc: "Asistencia técnica permanente" },
-              { icon: <Award size={22} />, title: "Certificados ISV", desc: "Compatibilidad garantizada" },
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-3">
                 <div style={{ color: "#00C2FF" }}>{item.icon}</div>
@@ -40,11 +39,11 @@ export function Footer() {
               </div>
               <div>
                 <span className="text-lg font-bold text-white leading-none">TechPro</span>
-                <span style={{ color: "#30A4FF" }} className="text-lg font-bold leading-none">Business</span>
+                <span style={{ color: "#30A4FF" }} className="text-lg font-bold leading-none">Builders</span>
               </div>
             </Link>
             <p className="text-white/60 text-sm leading-relaxed mb-5">
-              Especialistas en equipos de cómputo de gama empresarial. Tu socio tecnológico para impulsar la productividad de tu empresa.
+              Especialistas en equipos de cómputo de gama empresarial. El mejor equipo para impulsar el éxito de tu empresa.
             </p>
             <div className="flex gap-3">
               {[
@@ -110,41 +109,23 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
                 <MapPin size={16} style={{ color: "#30A4FF" }} className="mt-0.5 shrink-0" />
-                <span className="text-white/60 text-sm">Av. Tecnología 2500, Piso 12<br />Ciudad Empresarial, CP 10100</span>
+                <span className="text-white/60 text-sm">Av. Instituto, Av. Tecnológico S/N<br />Col la Gloria, 75520 Cdad. Serdán, Pue.</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={16} style={{ color: "#30A4FF" }} className="shrink-0" />
-                <a href="tel:+18005553324" className="text-white/60 text-sm hover:text-white transition-colors">
-                  +1 (800) 555-TECH
+                <a href="tel:+522227471104" className="text-white/60 text-sm hover:text-white transition-colors">
+                  +52 2227471104 
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={16} style={{ color: "#30A4FF" }} className="shrink-0" />
                 <a href="mailto:soporte@techpro.com" className="text-white/60 text-sm hover:text-white transition-colors">
-                  soporte@techpro.com
+                  techprobuilders_soporte@gmail.com
                 </a>
               </li>
             </ul>
 
-            {/* Newsletter */}
-            <div className="mt-6">
-              <p className="text-sm font-medium text-white mb-2">Suscríbete a nuestro newsletter</p>
-              <form className="flex gap-2">
-                <input
-                  type="email"
-                  placeholder="tu@email.com"
-                  className="flex-1 px-3 py-2 rounded-lg text-sm outline-none text-gray-800"
-                  style={{ backgroundColor: "rgba(255,255,255,0.9)" }}
-                />
-                <button
-                  type="submit"
-                  className="px-3 py-2 rounded-lg text-white text-sm font-medium transition-all hover:opacity-90"
-                  style={{ background: "linear-gradient(135deg, #30A4FF, #00C2FF)" }}
-                >
-                  OK
-                </button>
-              </form>
-            </div>
+            
           </div>
         </div>
       </div>
@@ -152,7 +133,7 @@ export function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-2">
-          <p className="text-white/40 text-xs">© 2026 TechPro Business. Todos los derechos reservados.</p>
+          <p className="text-white/40 text-xs">© 2026 TechPro Builders. Todos los derechos reservados.</p>
           <div className="flex items-center gap-4">
             <span className="text-white/40 text-xs">Medios de pago aceptados:</span>
             <div className="flex gap-2">

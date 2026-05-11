@@ -34,15 +34,13 @@ export function Navbar() {
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-1.5 opacity-90">
               <Phone size={13} />
-              <span>+1 (800) 555-TECH</span>
+              <span>+52 2227471104</span>
             </span>
             <span className="opacity-70">|</span>
-            <span className="opacity-90">soporte@techpro.com</span>
+            <span className="opacity-90">techprobuilders_soporte@gmail.com</span>
           </div>
           <div className="flex items-center gap-6 opacity-90">
-            <span>Envío gratis en pedidos +$500</span>
-            <span className="opacity-70">|</span>
-            <span>Soporte 24/7</span>
+            <span className="opacity-70"></span>
           </div>
         </div>
       </div>
@@ -64,7 +62,7 @@ export function Navbar() {
                   TechPro
                 </span>
                 <span style={{ color: "#30A4FF" }} className="text-lg font-bold tracking-tight leading-none">
-                  Business
+                  Builders
                 </span>
                 <div style={{ color: "#818286" }} className="text-xs leading-none mt-0.5">
                   Equipos Empresariales
