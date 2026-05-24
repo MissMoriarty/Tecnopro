@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { Monitor, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Youtube, Shield, Truck, HeadphonesIcon, Award } from "lucide-react";
+import { Monitor, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Youtube, Shield, Truck, HeadphonesIcon, Award, KeyboardIcon, Building } from "lucide-react";
 
 export function Footer() {
   return (
@@ -9,9 +9,9 @@ export function Footer() {
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { icon: <Truck size={22} />, title: "Envío Express", desc: "En 24-48 horas a todo el país" },
-              { icon: <Shield size={22} />, title: "Garantía Extendida", desc: "Hasta 5 años de cobertura" },
-              { icon: <HeadphonesIcon size={22} />, title: "Soporte 24/7", desc: "Asistencia técnica permanente" },
+              { icon: <KeyboardIcon size={22} />, title: "Certificación de Estrés", desc: "Hardware 100% Validado" },
+              { icon: <Shield size={22} />, title: "Continuidad Blindada", desc: "Garantía de Continuidad" },
+              { icon: <Building size={22} />, title: "Despliegue Presencial", desc: "Instalación en Sitio Incluida" },
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-3">
                 <div style={{ color: "#00C2FF" }}>{item.icon}</div>
@@ -69,10 +69,9 @@ export function Footer() {
             <h4 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">Productos</h4>
             <ul className="space-y-2.5">
               {[
-                { label: "Workstations", path: "/catalogo?category=workstation" },
-                { label: "Laptops Empresariales", path: "/catalogo?category=laptop" },
-                { label: "Servidores", path: "/catalogo?category=server" },
-                { label: "Accesorios Profesionales", path: "/catalogo?category=accessory" },
+                { label: "Gama básica", path: "/catalogo?category=Gama básica" },
+                { label: "Gama media", path: "/catalogo?category=Gama media" },
+                { label: "Gama alta", path: "/catalogo?category=Gama alta" },
                 { label: "Ofertas Especiales", path: "/catalogo" },
               ].map(item => (
                 <li key={item.path}>
@@ -90,9 +89,6 @@ export function Footer() {
               {[
                 { label: "Sobre Nosotros", path: "/nosotros" },
                 { label: "Nuestro Catálogo", path: "/catalogo" },
-                { label: "Política de Garantía", path: "#" },
-                { label: "Términos y Condiciones", path: "#" },
-                { label: "Política de Privacidad", path: "#" },
               ].map((item, i) => (
                 <li key={i}>
                   <Link to={item.path} className="text-white/60 text-sm hover:text-white transition-colors">

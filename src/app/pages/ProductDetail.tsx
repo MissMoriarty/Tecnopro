@@ -128,7 +128,7 @@ export default function ProductDetail() {
 
             
 
-            <p className="mb-6 text-sm" style={{ color: "#707072", lineHeight: 1.8 }}>
+            <p className="mb-6 text-sm" style={{ color: "#707072", lineHeight: 1.8, whiteSpace: "pre-line" }}>
               {product.description}
             </p>
 
@@ -297,49 +297,240 @@ export default function ProductDetail() {
 
           {activeTab === "desc" && (
             <div className="max-w-3xl">
-              <p style={{ color: "#707072", lineHeight: 1.9, fontSize: "0.95rem" }}>
+              <p style={{ color: "#707072", lineHeight: 1.9, fontSize: "0.95rem", whiteSpace: "pre-line" }}>
                 {product.longDescription}
               </p>
             </div>
           )}
 
           {activeTab === "warranty" && (
-            <div className="grid sm:grid-cols-2 gap-5 max-w-3xl">
-              {[
-                {
-                  icon: <Shield size={20} />,
-                  title: "Garantía del Fabricante",
-                  desc: product.specs.warranty || "1 año de garantía limitada",
-                },
-                {
-                  icon: <Clock size={20} />,
-                  title: "Soporte Técnico",
-                  desc: "Soporte técnico telefónico y por chat 24 horas al día, 7 días a la semana con ingenieros certificados.",
-                },
-                {
-                  icon: <Truck size={20} />,
-                  title: "Servicio en Sitio",
-                  desc: "Disponible servicio de reparación y mantenimiento en las instalaciones del cliente en la mayoría de las ciudades.",
-                },
-                {
-                  icon: <Package size={20} />,
-                  title: "Extensión de Garantía",
-                  desc: "Extiende tu cobertura hasta 5 años con nuestros paquetes de servicio Premium. Incluye partes y mano de obra.",
-                },
-              ].map((w, i) => (
-                <div key={i} className="p-5 rounded-xl border" style={{ borderColor: "#D0D1D6", backgroundColor: "#FCFCFE" }}>
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center mb-3 text-white"
-                    style={{ background: "linear-gradient(135deg, #000675, #0044AA)" }}
-                  >
-                    {w.icon}
-                  </div>
-                  <h4 className="font-semibold mb-2" style={{ color: "#000675", fontSize: "0.9rem" }}>{w.title}</h4>
-                  <p className="text-sm" style={{ color: "#818286", lineHeight: 1.6 }}>{w.desc}</p>
-                </div>
-              ))}
-            </div>
-          )}
+  <div className="max-w-3xl space-y-8" style={{ color: "#5a5a5c", fontSize: "0.99rem", lineHeight: 1.9 }}>
+
+    {/* Intro */}
+    <p>
+      En <strong style={{ color: "#000675" }}>TechPro Builders</strong> respaldamos la continuidad de tu negocio.
+      Diseñamos nuestras políticas bajo un principio de <strong>transparencia absoluta</strong> y{" "}
+      <strong>tolerancia cero a fallos</strong>, para que sepas exactamente cómo protegemos tu inversión
+      tecnológica sin sorpresas ni letras chiquitas.
+    </p>
+
+    {/* Cobertura y Plazos */}
+    <div>
+      <h3 className="text-lg font-bold mb-1 flex items-center gap-2" style={{ color: "#1a1a1a" }}>
+        Cobertura, Plazos y Canales de Soporte
+      </h3>
+      <hr className="mb-3" style={{ borderColor: "#E0E0E0" }} />
+      <p className="mb-3">
+        El periodo de protección y la vía de atención se asignan estratégicamente según la gama del equipo
+        adquirido, aplicables a partir de la fecha de entrega:
+      </p>
+      <ul className="list-disc list-outside ml-5 space-y-3">
+        <li>
+          <strong>Gama Básica (Ofimática y administración):</strong>
+          <ul className="list-[circle] list-outside ml-5 mt-1 space-y-1">
+            <li><strong>6 meses</strong> de garantía en hardware.</li>
+            <li>Soporte técnico virtual exclusivo a través de nuestro correo:{" "}
+              <strong>techprobuilders_soporte@gmail.com</strong>.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>Gama Media (Ingeniería de Campo, Redes y CCTV):</strong>
+          <ul className="list-[circle] list-outside ml-5 mt-1 space-y-1">
+            <li><strong>12 meses (1 año)</strong> de garantía en hardware.</li>
+            <li>Soporte técnico virtual y telefónico a través de:{" "}
+              <strong>techprobuilders_soporte@gmail.com</strong> y al teléfono: <strong>2227471104</strong>.
+            </li>
+            <li><strong>Incluye un (1) mantenimiento preventivo gratuito</strong> válido durante la vigencia de la póliza.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Gama Alta (Workstations, Diseño PCB y Prototipado):</strong>
+          <ul className="list-[circle] list-outside ml-5 mt-1 space-y-1">
+            <li><strong>18 meses (Año y medio)</strong> de garantía extendida en hardware.</li>
+            <li>Soporte técnico prioritario presencial, virtual y telefónico a través de:{" "}
+              <strong>techprobuilders_soporte@gmail.com</strong> y al teléfono: <strong>2227471104</strong>.
+            </li>
+            <li><strong>Incluye un (1) mantenimiento preventivo gratuito</strong> válido durante la vigencia de la póliza.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    {/* Qué cubre */}
+    <div>
+      <h3 className="text-lg font-bold mb-1 flex items-center gap-2" style={{ color: "#1a1a1a" }}>
+      ¿Qué cubre la garantía?
+      </h3>
+      <hr className="mb-3" style={{ borderColor: "#E0E0E0" }} />
+      <p className="mb-3">
+        Nos hacemos responsables por cualquier falla de origen en los componentes físicos del equipo.
+        La cobertura incluye de manera gratuita:
+      </p>
+      <ul className="list-disc list-outside ml-5 space-y-2">
+        <li>
+          <strong>Defectos de fabricación en hardware esencial:</strong> Procesador, tarjeta madre,
+          memoria RAM, unidades de almacenamiento SSD, fuente de poder, tarjeta gráfica y sistemas de enfriamiento.
+        </li>
+        <li>
+          <strong>Insumos y mano de obra:</strong> Todo proceso de reparación técnica o sustitución de piezas
+          defectuosas por componentes nuevos se realizará <strong>sin costo alguno</strong> para tu empresa.
+        </li>
+      </ul>
+    </div>
+
+    {/* Exclusiones */}
+    <div>
+      <h3 className="text-lg font-bold mb-1 flex items-center gap-2" style={{ color: "#1a1a1a" }}>
+        ¿Qué anula la garantía? (Exclusiones)
+      </h3>
+      <hr className="mb-3" style={{ borderColor: "#E0E0E0" }} />
+      <p className="mb-3">
+        Para garantizar la precisión de nuestros diagnósticos y proteger la ingeniería de los equipos,
+        la garantía quedará automáticamente sin efecto bajo las siguientes condiciones:
+      </p>
+      <ul className="list-disc list-outside ml-5 space-y-2">
+        <li>
+          <strong>Daño físico evidente:</strong> Golpes, fisuras, abolladuras, pantallas rotas o daños internos
+          provocados por caídas, accidentes o malas prácticas de traslado.
+        </li>
+        <li>
+          <strong>Factores del entorno:</strong> Daños por derrames de líquidos, exposición a humedad extrema,
+          fuego, acumulación severa de polvo o introducción de objetos extraños.
+        </li>
+        <li>
+          <strong>Irregularidades eléctricas:</strong> Componentes quemados por sobrecargas o cortocircuitos
+          debido a la falta de un regulador de voltaje adecuado.
+        </li>
+        <li>
+          <strong>Manipulación externa no autorizada:</strong> Violación, rotura o alteración de los sellos de
+          seguridad de TechPro Builders, o si el equipo fue abierto y manipulado por personal ajeno a nuestra empresa.
+        </li>
+        <li>
+          <strong>Software e información:</strong> La póliza cubre estrictamente el hardware. No nos hacemos
+          responsables por configuraciones de sistemas operativos, daños por virus, malware o pérdida de datos.{" "}
+          <em>El respaldo de la información es responsabilidad exclusiva del cliente.</em>
+        </li>
+      </ul>
+    </div>
+
+    {/* Procedimiento */}
+    <div>
+      <h3 className="text-lg font-bold mb-1 flex items-center gap-2" style={{ color: "#1a1a1a" }}>
+        Procedimiento de Reclamación y Diagnóstico
+      </h3>
+      <hr className="mb-3" style={{ borderColor: "#E0E0E0" }} />
+      <p className="mb-3">
+        Si alguno de tus equipos presenta un comportamiento inusual o una falla técnica, el proceso de
+        atención es sumamente ágil:
+      </p>
+      <ol className="list-decimal list-outside ml-5 space-y-2">
+        <li>
+          <strong>Reporta el incidente:</strong> Ponte en contacto inmediato con nuestro equipo técnico a través
+          del correo <strong>techprobuilders_soporte@gmail.com</strong> o llamando al{" "}
+          <strong>2227471104 según la gama del equipo</strong>, adjuntando de forma obligatoria tu factura o nota de venta.
+        </li>
+        <li>
+          <strong>Evaluación en taller:</strong> El equipo ingresará a nuestro laboratorio técnico, donde
+          ingenieros informáticos realizarán un diagnóstico detallado en un plazo máximo de <strong>72 horas hábiles</strong>.
+        </li>
+        <li>
+          <strong>Resolución:</strong> Si el análisis determina que la falla aplica dentro de la cobertura,
+          procederemos con la reparación inmediata o el reemplazo del componente sin cargos adicionales.
+        </li>
+      </ol>
+    </div>
+
+    {/* Cláusula Gama Alta */}
+    <div>
+      <h3 className="text-lg font-bold mb-1 flex items-center gap-2" style={{ color: "#1a1a1a" }}>
+         Certificación de Calidad y Pruebas de Estrés <span style={{ color: "#000675" }}>(Pre-Entrega)</span>
+      </h3>
+      <hr className="mb-3" style={{ borderColor: "#E0E0E0" }} />
+      <p className="mb-3">
+        En TechPro Builders, la prevención es la clave fundamental de la confiabilidad operativa. 
+        Ningún equipo sale de nuestro almacén sin antes superar <strong> rigurosas pruebas de estrés térmico y 
+        de componentes</strong>, asegurando una tolerancia cero a fallos desde el primer encendido de la máquina 
+        en tus instalaciones.
+      </p>
+      <div className="rounded-xl p-4 border-l-4 gap-2" style={{ backgroundColor: "#f0f4ff", borderColor: "#000675" }}>
+        <p>
+            Como parte de nuestro compromiso con la excelencia técnica,<strong> cada equipo entregado incluye un
+            reporte digital en PDF enviado directamente al cliente</strong>. Este documento certifica detalladamente
+            que la computadora superó con éxito las pruebas de estrés sintético aplicadas a los componentes
+            más críticos del sistema: procesador (CPU), memoria RAM y estabilidad térmica bajo máxima carga
+            de trabajo. De esta manera, garantizamos que tu hardware está 100% optimizado y listo para
+            responder a las exigencias de tu empresa desde el primer segundo.
+          
+        </p>
+      </div>
+    </div>
+
+    {/* Cláusula Gama Alta */}
+    <div>
+      <h3 className="text-lg font-bold mb-1 flex items-center gap-2" style={{ color: "#1a1a1a" }}>
+        Cláusula de Continuidad Operativa <span style={{ color: "#000675" }}>(Exclusivo Gama Alta)</span>
+      </h3>
+      <hr className="mb-3" style={{ borderColor: "#E0E0E0" }} />
+      <p className="mb-3">
+        Entendemos perfectamente que los departamentos de ingeniería de alto nivel, diseño de circuitos o
+        desarrollo de software no pueden detener su producción.
+
+      </p>
+      <div className="rounded-xl p-4 border-l-4 gap-2" style={{ backgroundColor: "#f0f4ff", borderColor: "#000675" }}>
+        <p>
+
+          <strong>Compromiso de Respaldo TechPro:</strong> Si tu equipo es de <strong>Gama Alta</strong> y
+          nuestro diagnóstico confirma que la reparación presencial de hardware demorará{" "}
+          <strong>más de 24 horas hábiles</strong>, te entregaremos de inmediato un equipo de cómputo en
+          préstamo con características de rendimiento equivalentes. Este servicio se formalizará bajo un esquema
+          de comodato temporal, asegurando que la operación de tu empresa no pierda un solo día de productividad
+          mientras dejamos tu herramienta original como nueva.
+        </p>
+      </div>
+    </div>
+
+    {/* Cláusula Despliegue */}
+    <div>
+      <h3 className="text-lg font-bold mb-1 flex items-center gap-2" style={{ color: "#1a1a1a" }}>
+        Programa de Despliegue Corporativo Cero Esfuerzo <span style={{ color: "#000675" }}>()</span>
+      </h3>
+      <hr className="mb-3" style={{ borderColor: "#E0E0E0" }} />
+      <p className="mb-3">
+        En TechPro Builders sabemos que adquirir hardware empresarial es solo el primer paso. El
+        verdadero reto para los departamentos de tecnología es la implementación, el desempaque y la
+        configuración óptima de los equipos en la red local sin interrumpir la productividad de la empresa.
+
+        Por ello, alineados con nuestro principio de Tolerancia Cero a Fallos, eliminamos la fricción técnica:
+        En la compra de 5 o más equipos, nuestro equipo de ingenieros informáticos se encargará de realizar un despliegue corporativo
+        completamente gratuito en tus instalaciones. Esto incluye:
+
+       
+      </p>
+      <div className="rounded-xl p-4 border-l-4 gap-2" style={{ backgroundColor: "#f0f4ff", borderColor: "#000675" }}>
+        <p>
+
+           <ul className="list-disc list-outside ml-5 mt-3 space-y-2">
+          <li><strong>Desempaque y configuración inicial:</strong> Nos encargamos de sacar los equipos de sus cajas, realizar las conexiones físicas necesarias y configurar el sistema operativo con las actualizaciones más recientes.</li>
+          <li><strong>Integración a la red local:</strong> Conectamos cada equipo a tu red corporativa, asegurando que tengan acceso a internet, recursos compartidos y servidores internos sin que tu equipo de IT tenga que mover un dedo.</li>
+          <li><strong>Instalación de software básico:</strong> Preinstalamos las aplicaciones esenciales para tu negocio (navegadores, suites ofimáticas, antivirus) y dejamos todo listo para que solo tengas que instalar tus programas específicos.</li>
+          <li><strong>Pruebas de funcionamiento:</strong> Realizamos un chequeo final para garantizar que cada equipo esté funcionando perfectamente en tu entorno, con conectividad estable y sin errores de hardware o software.</li>
+        </ul>
+        </p>
+      </div>
+
+      <p className="mb-3">
+        <ul className="list-disc list-outside ml-5 mt-3 space-y-2">
+          <li><strong>Activación del  beneficio:</strong> Válido únicamente para órdenes de compra consolidadas que sumen 5 (cinco) o más computadoras de cualquier gama en una misma factura.</li>
+          <li><strong>Límites del Alcance::</strong> El servicio se enfoca estrictamente en la puesta a punto y arranque inicial de las computadoras adquiridas. Modificaciones a la topología de red existente, configuraciones de servidores centrales, enlaces de domótica complejos o cableado estructurado físico de las oficinas se cotizarán como servicios de integración independientes.</li>
+          
+        </ul>
+      </p>
+
+    </div>
+
+  </div>
+)}
         </div>
 
         {/* Related products */}

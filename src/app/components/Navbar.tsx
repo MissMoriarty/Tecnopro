@@ -96,10 +96,9 @@ export function Navbar() {
                 </button>
                 <div className="absolute top-full left-0 mt-1 w-56 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   {[
-                    { label: "Workstations", path: "/catalogo?category=workstation" },
-                    { label: "Laptops Empresariales", path: "/catalogo?category=laptop" },
-                    { label: "Servidores", path: "/catalogo?category=server" },
-                    { label: "Accesorios Profesionales", path: "/catalogo?category=accessory" },
+                    { label: "Gama básica", path: "/catalogo?category=Gama básica" },
+                    { label: "Gama media", path: "/catalogo?category=Gama media" },
+                    { label: "Gama alta", path: "/catalogo?category=Gama alta" },
                   ].map(item => (
                     <Link
                       key={item.path}
@@ -204,10 +203,9 @@ export function Navbar() {
               <div className="pt-2 border-t border-gray-100">
                 <p className="px-4 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">Categorías</p>
                 {[
-                  { label: "Workstations", path: "/catalogo?category=workstation" },
-                  { label: "Laptops Empresariales", path: "/catalogo?category=laptop" },
-                  { label: "Servidores", path: "/catalogo?category=server" },
-                  { label: "Accesorios Profesionales", path: "/catalogo?category=accessory" },
+                  { label: "Gama básica", path: "/catalogo?category=Gama básica" },
+                  { label: "Gama media", path: "/catalogo?category=Gama media" },
+                  { label: "Gama alta", path: "/catalogo?category=Gama alta" },
                 ].map(item => (
                   <Link
                     key={item.path}

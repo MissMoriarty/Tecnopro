@@ -9,10 +9,9 @@ type SortOption = "popular" | "price-asc" | "price-desc" | "name";
 
 const categoryOptions = [
   { id: "", label: "Todas las categorías" },
-  { id: "workstation", label: "Workstations" },
-  { id: "laptop", label: "Laptops Empresariales" },
-  { id: "server", label: "Servidores" },
-  { id: "accessory", label: "Accesorios Profesionales" },
+  { id: "Gama básica", label: "Gama básica" },
+  { id: "Gama media", label: "Gama media" },
+  { id: "Gama alta", label: "Gama alta" },
 ];
 
 const sortOptions: { value: SortOption; label: string }[] = [
@@ -31,7 +30,7 @@ export default function Catalog() {
   const [searchQuery, setSearchQuery] = useState(searchParams.get("search") || "");
   const [selectedCategory, setSelectedCategory] = useState(searchParams.get("category") || "");
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 10000]);
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 100000]);
   const [sortBy, setSortBy] = useState<SortOption>("popular");
   const [inStockOnly, setInStockOnly] = useState(false);
 
@@ -88,14 +87,14 @@ export default function Catalog() {
     setSearchQuery("");
     setSelectedCategory("");
     setSelectedBrands([]);
-    setPriceRange([0, 10000]);
+    setPriceRange([0, 100000]);
     setInStockOnly(false);
     setSortBy("popular");
     setSearchParams({});
   };
 
   const hasFilters = searchQuery || selectedCategory || selectedBrands.length > 0 ||
-    priceRange[0] > 0 || priceRange[1] < 10000 || inStockOnly;
+    priceRange[0] > 0 || priceRange[1] < 100000 || inStockOnly;
 
   const FilterPanel = () => (
     <div className="space-y-6">
@@ -181,13 +180,13 @@ export default function Catalog() {
                 className="w-full px-3 py-2 rounded-lg border text-sm"
                 style={{ borderColor: "#CDCED2", color: "#000675" }}
                 min={priceRange[0]}
-                max={10000}
+                max={100000}
               />
             </div>
           </div>
           <div className="flex justify-between text-xs" style={{ color: "#A1A1A3" }}>
             <span>$0</span>
-            <span>$10,000+</span>
+            <span>$100,000+</span>
           </div>
         </div>
       </div>

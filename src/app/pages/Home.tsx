@@ -2,99 +2,92 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import {
   ChevronRight, ShieldCheck, Truck, Headphones, Award,
-  Monitor, Laptop, Server, Package, ArrowRight, Star, Zap, CheckCircle
+  Monitor, Laptop, Server, Package, ArrowRight, Star, Zap, CheckCircle,
+  Computer,
+  KeyboardIcon,
+  Building
 } from "lucide-react";
 import { products } from "../../data/products";
 import { ProductCard } from "../components/ProductCard";
 import { useCart } from "../context/CartContext";
+import { Tooltip } from "recharts";
 
 const heroSlides = [
   {
     id: 1,
-    tag: "Gama Alta",
-    title: "Dell Precision 3591",
-    subtitle: "Laptop de alto rendimiento",
-    description: "Precisión profesional, sin compromisos, desde el primer trazo hasta el último circuito.",
-    price: 0,
+    tag: "Gama Básica",
+    title: "Lenovo ThinkBook 14 G6 IRL",
+    subtitle: "Optimiza tu administración sin comprometer tu presupuesto.",
+    description: "La laptop ejecutiva que redefine la eficiencia en las áreas contables y operativas de tu empresa.",
+    price: 16800,
     cta: "Ver Producto",
-    productId: "sv-003",
-    image: "https://laptopmedia.com/wp-content/uploads/2024/11/5-19-1536x864.jpg",
-    specs: ["Intel Core Ultra 9 165H", "64 GB LPDDR5X", "NVIDIA RTX 500"],
+    productId: "ws-001",
+    image: "https://i5.walmartimages.com/asr/2484aeb4-a07d-455e-8ee0-1607d68ace39.0c3f525fde2f3f73baa53c43483cbe85.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF",
+    specs: ["Intel Core i5-1335U", "16 GB RAM DDR5", "512 GB SSD NVMe"],
   },
   {
     id: 2,
     tag: "Gama media",
-    title: "ThinkPad E14 Gen 7",
-    subtitle: "Hecha para los que no paran.",
-    description: "Potencia de ingeniería, resistencia de campo, en una sola máquina.",
-    price: 0,
+    title: "Lenovo ThinkPad T14 Gen 4",
+    subtitle: "Poder táctico e inmunidad a fallos en el sitio de trabajo.",
+    description: "Ideal para ingenieros de campo que despliegan sistemas de CCTV, domótica e infraestructura de red.",
+    price: 31270,
     cta: "Ver Producto",
     productId: "lt-001",
-    image: "https://www.laphard.pl/userdata/public/assets/images/Product/Lenovo/ThinkPad/E14_G7/laptop-lenovo-thinkpad-e14-gen-7-006.webp",
-    specs: ["Intel Core Ultra 7 240H", "32 GB DDR5", "Intel Arc Graphics"],
+    image: "https://p4-ofp.static.pub//fes/cms/2025/04/18/s93adpqkap679puc4pyhohevfw8ldq438529.png?width=584&height=584",
+    specs: ["AMD Ryzen 7 PRO 7840U", "32 GB DDR5", "1 TB SSD NVMe"],
   },
   {
     id: 3,
-    tag: "Gama básica",
-    title: "HP 245 G10",
-    subtitle: "Rendimiento profesional sin precio profesional.",
-    description: "Todo lo que tu equipo necesita para trabajar, sin nada que sobre.",
-    price: 0,
+    tag: "Gama alta",
+    title: "ThinkPad P14s Gen 5",
+    subtitle: "La Workstation móvil definitiva ideal para arquitectos de hardware.",
+    description: "Máxima precisión en diseño de PCBs y desarrollo de sistemas embebidos.",
+    price: 41275,
     cta: "Ver Producto",
-    productId: "ws-001",
-    image: "https://jp.ext.hp.com/content/dam/jp-ext-hp-com/jp/ja/ec/notebooks/business/hp_245_g10/images/move3_full.jpg",
-    specs: ["AMD Ryzen 5 7530U", "8 GB RAM DDR4-3200 MT/", "AMD Radeon Graphics"],
+    productId: "sv-002",
+    image: "https://tse4.mm.bing.net/th/id/OIP.EHT0yqfrHa5J5O7POPD6zgHaEK?rs=1&pid=ImgDetMain&o=7&rm=3",
+    specs: ["Intel Core Ultra 7 155He", "32 GB RAM DDR5", "1 TB SSD NVMe"],
   },
+
 ];
 
 const categoryCards = [
   {
     id: "workstation",
-    label: "Workstations",
-    desc: "Torre y ultra-compactas",
-    icon: <Monitor size={28} />,
+    label: "Gama básica",
+    desc: "Rendimiento esencial",
+    icon: <Laptop size={28} />,
     count: products.filter(p => p.category === "Gama básica").length,
     gradient: "linear-gradient(135deg, #000675 0%, #0044AA 100%)",
   },
   {
     id: "laptop",
-    label: "Laptops Empresariales",
-    desc: "Movilidad profesional",
-    icon: <Laptop size={28} />,
+    label: "Gama media",
+    desc: "Equilibrio entre rendimiento y movilidad",
+    icon: <Monitor size={28} />,
     count: products.filter(p => p.category === "Gama media").length,
     gradient: "linear-gradient(135deg, #0044AA 0%, #30A4FF 100%)",
   },
   {
     id: "server",
-    label: "Servidores",
-    desc: "Alta disponibilidad",
-    icon: <Server size={28} />,
+    label: "Gama alta",
+    desc: "Potencia sin compromisos",
+    icon: <Computer size={28} />,
     count: products.filter(p => p.category === "Gama alta").length,
     gradient: "linear-gradient(135deg, #30A4FF 0%, #00C2FF 100%)",
   },
-  {
-    id: "accessory",
-    label: "Accesorios Pro",
-    desc: "Equipamiento completo",
-    icon: <Package size={28} />,
-    count: 0,
-    gradient: "linear-gradient(135deg, #00C2FF 0%, #30A4FF 100%)",
-  },
+
 ];
 
 const benefits = [
-  { icon: <Truck size={24} />, title: "Envío Express Gratis", desc: "En pedidos superiores a $500. Entrega en 24-48 horas a todo el país con rastreo en tiempo real." },
-  { icon: <ShieldCheck size={24} />, title: "Garantía Extendida", desc: "Cobertura hasta 5 años con soporte ProSupport. Reemplazo de piezas y servicio en sitio incluido." },
-  { icon: <Headphones size={24} />, title: "Soporte Técnico 24/7", desc: "Equipo de ingenieros certificados disponibles todos los días del año para asistirte." },
-  { icon: <Award size={24} />, title: "Certificados ISV", desc: "Equipos certificados para las principales aplicaciones profesionales del mercado." },
+  { icon: <KeyboardIcon size={24} />, title: "Hardware 100% Validado", desc: "Sometemos cada laptop a rigurosas pruebas de estrés sintético de CPU, RAM y estabilidad térmica, entregándote un reporte que avala una tolerancia cero a fallos desde el primer encendido." },
+  { icon: <Building size={24} />, title: "Instalación en Sitio Incluida", desc: "Nuestro equipo de ingenieros asiste presencialmente a tu empresa para realizar el desempaque, montaje, integración a la red local y mapeo de periféricos." },
+  { icon: <CheckCircle size={24} />, title: "Garantía de Continuidad", desc: "Tu producción jamás se detiene. Si un equipo de Gama Alta requiere revisión en taller por más de 24 horas, te otorgamos de inmediato un equipo de respaldo equivalente en préstamo." },
+  { icon: <Award size={24} />, title: "Consultoría a Nivel de Ingeniería", desc: "No somos ejecutivos de ventas, somos ingenieros informáticos. Analizamos tu flujo de trabajo y te equipamos con estaciones de trabajo con certificación ISV, garantizando estabilidad absoluta" },
 ];
 
-const stats = [
-  { value: "10,000+", label: "Empresas Atendidas" },
-  { value: "50,000+", label: "Equipos Vendidos" },
-  { value: "15+", label: "Años de Experiencia" },
-  { value: "99.9%", label: "Satisfacción Cliente" },
-];
+
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -237,19 +230,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── STATS BAR ─── */}
-      <section style={{ backgroundColor: "#FCFCFE", borderTop: "1px solid #CDCED2", borderBottom: "1px solid #CDCED2" }}>
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            {stats.map((s, i) => (
-              <div key={i}>
-                <p style={{ fontSize: "1.8rem", fontWeight: 800, color: "#000675" }}>{s.value}</p>
-                <p className="text-sm" style={{ color: "#818286" }}>{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* ─── CATEGORIES ─── */}
       <section className="max-w-7xl mx-auto px-6 py-16">
@@ -259,11 +240,11 @@ export default function Home() {
             Soluciones para cada necesidad
           </h2>
           <p className="mt-2 max-w-xl mx-auto" style={{ color: "#818286" }}>
-            Desde workstations de alto rendimiento hasta servidores de misión crítica, tenemos el equipo perfecto para tu empresa.
+            Desde laptops para oficina hasta computadoras de alto desempeño. Tenemos el equipo perfecto para tu empresa.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
           {categoryCards.map(cat => (
             <Link
               key={cat.id}
@@ -329,10 +310,10 @@ export default function Home() {
                 OFERTA CORPORATIVA
               </span>
               <h2 style={{ fontSize: "clamp(1.4rem, 3vw, 2rem)", fontWeight: 800, color: "white" }} className="mb-3">
-                Compra 5 o más equipos y obtén hasta 20% de descuento
+                Compra 5 equipos o más y obtén la instalación de tus equipos completamente gratis.
               </h2>
               <p className="text-white/70 mb-6">
-                Programa corporativo especial para empresas. Contacta a nuestro equipo de ventas para una cotización personalizada.
+                Nuestro equipo de ingenieros se trasladará directamente a su empresa para instalar y entregar el hardware listo para producir desde el primer segundo.
               </p>
               <div className="flex gap-3 flex-wrap">
                 <Link
@@ -353,7 +334,7 @@ export default function Home() {
             </div>
             <div className="flex justify-center md:justify-end">
               <div className="grid grid-cols-2 gap-3">
-                {["5+ equipos: -10%", "10+ equipos: -15%", "20+ equipos: -20%", "Soporte incluido"].map((item, i) => (
+                {["Despliegue físico", "Auditoría de conectividad en sitio", "Alineación de periféricos de red", "Entrega de certificados físicos"].map((item, i) => (
                   <div key={i} className="flex items-center gap-2 px-3 py-2 rounded-xl"
                     style={{ backgroundColor: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.15)" }}>
                     <CheckCircle size={14} style={{ color: "#00C2FF" }} />
@@ -413,68 +394,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── TESTIMONIALS ─── */}
-      <section style={{ backgroundColor: "#FCFCFE", borderTop: "1px solid #CDCED2" }} className="py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-10">
-            <p className="text-sm font-semibold mb-2" style={{ color: "#30A4FF" }}>TESTIMONIOS</p>
-            <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.2rem)", fontWeight: 700, color: "#000675" }}>
-              Lo que dicen nuestros clientes
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                name: "Ing. Carlos Morales",
-                role: "Director de TI, FinGroup Corp",
-                text: "Compramos 25 workstations Dell Precision para nuestro equipo de desarrollo. La entrega fue puntual y el soporte post-venta ha sido excepcional. Los equipos han elevado la productividad del equipo notablemente.",
-                rating: 5,
-              },
-              {
-                name: "Dra. Laura Vásquez",
-                role: "CTO, MedTech Solutions",
-                text: "Los servidores HP ProLiant que adquirimos llevan 18 meses operando 24/7 sin ningún incidente. El servicio técnico de TechPro es incomparable. Definitivamente nuestro proveedor tecnológico de confianza.",
-                rating: 5,
-              },
-              {
-                name: "Arq. Roberto Fuentes",
-                role: "Gerente de Proyectos, DesignStudio",
-                text: "Las laptop workstations HP ZBook han transformado la forma en que trabajamos. Ahora procesamos renders en la mitad del tiempo. La inversión se pagó sola en 3 meses de mayor productividad.",
-                rating: 5,
-              },
-            ].map((t, i) => (
-              <div key={i} className="p-6 rounded-2xl border" style={{ borderColor: "#D0D1D6", backgroundColor: "white" }}>
-                <div className="flex mb-3">
-                  {Array.from({ length: t.rating }).map((_, j) => (
-                    <Star key={j} size={14} fill="#30A4FF" style={{ color: "#30A4FF" }} />
-                  ))}
-                </div>
-                <p className="text-sm mb-4" style={{ color: "#707072", lineHeight: 1.7 }}>"{t.text}"</p>
-                <div className="flex items-center gap-3 pt-4 border-t" style={{ borderColor: "#CDCED2" }}>
-                  <div
-                    className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm"
-                    style={{ background: "linear-gradient(135deg, #000675, #0044AA)" }}
-                  >
-                    {t.name.charAt(0)}
-                  </div>
-                  <div>
-                    <p className="font-semibold text-sm" style={{ color: "#000675" }}>{t.name}</p>
-                    <p className="text-xs" style={{ color: "#818286" }}>{t.role}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* ─── BRAND LOGOS ─── */}
       <section className="py-12 max-w-7xl mx-auto px-6">
         <p className="text-center text-sm font-semibold mb-8" style={{ color: "#A1A1A3" }}>
-          DISTRIBUIDORES AUTORIZADOS DE LAS PRINCIPALES MARCAS
+          DISTRIBUIDORES DE LAS PRINCIPALES MARCAS
         </p>
         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-          {["Dell", "HP", "Lenovo", "ASUS", "Cisco", "APC", "Logitech"].map(brand => (
+          {["Dell", "HP", "Lenovo", "ASUS"].map(brand => (
             <span key={brand} className="text-xl font-bold" style={{ color: "#CDCED2", letterSpacing: "-0.5px" }}>
               {brand}
             </span>
