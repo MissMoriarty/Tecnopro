@@ -85,7 +85,12 @@ export const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <Home />,
+    element: <NotFound />,
   },
 
-]);
+],
+{
+  basename: "/Tecnopro",   // ← agregar esto
+}
+
+);
