@@ -30,7 +30,7 @@ function NotFound() {
         <h1 style={{ color: "#000675", fontSize: "1.8rem", fontWeight: 700 }}>Página no encontrada</h1>
         <p style={{ color: "#818286" }}>La página que buscas no existe o fue movida.</p>
         <a
-          href="/"
+          href="/Tecnopro"
           className="px-6 py-3 rounded-xl text-white font-semibold mt-2"
           style={{ background: "linear-gradient(135deg, #000675, #0044AA)" }}
         >
@@ -43,6 +43,7 @@ function NotFound() {
 
 export const router = createBrowserRouter([
   {
+    
     path: "/",
     element: (
       <Layout>
@@ -86,4 +87,5 @@ export const router = createBrowserRouter([
     path: "*",
     element: <NotFound />,
   },
+
 ]);
