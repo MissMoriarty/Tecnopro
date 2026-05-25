@@ -78,7 +78,7 @@ export default function About() {
 
           <div className="relative">
             <img
-              src="imagen_equipo.jpg"
+              src="https://github.com/MissMoriarty/Tecnopro/blob/main/imagen_equipo.jpg?raw=true"
               alt="Equipo TechPro"
               className="rounded-2xl shadow-xl w-full object-cover"
               style={{ height: "400px" }}
