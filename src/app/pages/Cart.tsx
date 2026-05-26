@@ -16,7 +16,7 @@ export default function Cart() {
 
   const discount = couponApplied ? totalPrice * 0.1 : 0;
   const shipping = totalPrice >= 500 ? 0 : 49.99;
-  const finalTotal = totalPrice - discount + shipping;
+  const finalTotal = totalPrice;
 
 
 
