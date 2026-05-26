@@ -20,14 +20,7 @@ export default function Cart() {
   const tax = (totalPrice - discount) * 0.16;
   const finalTotal = totalPrice - discount + shipping + tax;
 
-  const handleCoupon = () => {
-    if (couponCode.toUpperCase() === "TECHPRO10") {
-      setCouponApplied(true);
-      setCouponError("");
-    } else {
-      setCouponError("Cupón inválido. Usa TECHPRO10 para 10% de descuento.");
-    }
-  };
+
 
   const suggestedProducts = products.filter(p => !items.find(i => i.product.id === p.id)).slice(0, 3);
 
@@ -262,46 +255,7 @@ export default function Cart() {
                   </div>
                 </div>
 
-                {/* Coupon */}
-                <div className="mb-5">
-                  <label className="text-xs font-medium block mb-1.5" style={{ color: "#818286" }}>
-                    <Tag size={12} className="inline mr-1" />
-                    Código de descuento
-                  </label>
-                  {couponApplied ? (
-                    <div className="flex items-center gap-2 px-3 py-2.5 rounded-xl border text-sm"
-                      style={{ borderColor: "#30A4FF", backgroundColor: "#f0f9ff" }}>
-                      <CheckCircle size={14} style={{ color: "#30A4FF" }} />
-                      <span style={{ color: "#30A4FF" }} className="font-medium">TECHPRO10 aplicado</span>
-                      <button onClick={() => setCouponApplied(false)} className="ml-auto text-xs" style={{ color: "#A1A1A3" }}>
-                        Quitar
-                      </button>
-                    </div>
-                  ) : (
-                    <div>
-                      <div className="flex gap-2">
-                        <input
-                          type="text"
-                          value={couponCode}
-                          onChange={e => { setCouponCode(e.target.value); setCouponError(""); }}
-                          placeholder="TECHPRO10"
-                          className="flex-1 px-3 py-2 rounded-xl border text-sm outline-none"
-                          style={{ borderColor: "#CDCED2", color: "#000675" }}
-                        />
-                        <button
-                          onClick={handleCoupon}
-                          className="px-4 py-2 rounded-xl text-white text-sm font-medium"
-                          style={{ background: "linear-gradient(135deg, #000675, #0044AA)" }}
-                        >
-                          Aplicar
-                        </button>
-                      </div>
-                      {couponError && (
-                        <p className="text-xs mt-1.5" style={{ color: "#d4183d" }}>{couponError}</p>
-                      )}
-                    </div>
-                  )}
-                </div>
+                
 
                 {/* Checkout button */}
                 <button
