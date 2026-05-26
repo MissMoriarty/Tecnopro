@@ -12,12 +12,10 @@ export default function Cart() {
   const { items, removeFromCart, updateQuantity, clearCart, totalItems, totalPrice } = useCart();
   const [couponCode, setCouponCode] = useState("");
   const [couponApplied, setCouponApplied] = useState(false);
-  const [couponError, setCouponError] = useState("");
   const [checkoutStep, setCheckoutStep] = useState<"cart" | "success">("cart");
 
   const discount = couponApplied ? totalPrice * 0.1 : 0;
   const shipping = totalPrice >= 500 ? 0 : 49.99;
-  const tax = (totalPrice - discount) * 0.16;
   const finalTotal = totalPrice - discount + shipping + tax;
 
 
@@ -231,21 +229,11 @@ export default function Cart() {
                     <span style={{ color: "#818286" }}>Subtotal ({totalItems} productos)</span>
                     <span style={{ color: "#000675" }} className="font-medium">${totalPrice.toLocaleString()}</span>
                   </div>
-                  {couponApplied && (
-                    <div className="flex justify-between text-sm">
-                      <span style={{ color: "#30A4FF" }}>Descuento (10%)</span>
-                      <span style={{ color: "#30A4FF" }} className="font-medium">-${discount.toFixed(2)}</span>
-                    </div>
-                  )}
                   <div className="flex justify-between text-sm">
                     <span style={{ color: "#818286" }}>Envío</span>
                     <span style={{ color: shipping === 0 ? "#30A4FF" : "#000675" }} className="font-medium">
                       {shipping === 0 ? "Gratis ✓" : `$${shipping}`}
                     </span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span style={{ color: "#818286" }}>IVA (16%)</span>
-                    <span style={{ color: "#000675" }} className="font-medium">${tax.toFixed(2)}</span>
                   </div>
                   <div className="pt-3 border-t flex justify-between" style={{ borderColor: "#CDCED2" }}>
                     <span className="font-bold" style={{ color: "#000675" }}>Total</span>
@@ -274,7 +262,7 @@ export default function Cart() {
                 <div className="grid grid-cols-3 gap-2 mt-5 pt-5 border-t" style={{ borderColor: "#CDCED2" }}>
                   {[
                     { icon: <Shield size={14} />, text: "Pago seguro" },
-                    { icon: <Truck size={14} />, text: "Envío express" },
+                    { icon: <Shield size={14} />, text: "Soporte" },
                     { icon: <CheckCircle size={14} />, text: "Garantía" },
                   ].map((b, i) => (
                     <div key={i} className="flex flex-col items-center gap-1 text-center">
